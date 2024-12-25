@@ -1,16 +1,11 @@
 <template>
   <div id="app">
- <nav>
-  <router-link to="/"> Главная</router-link>
-  <router-link to="/about">Карта поставщиков</router-link>
- </nav>
+
  <router-view />
   </div>
 </template>
 
 <script>
-
-
 export default {
   name: 'App',
 }
@@ -18,13 +13,12 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-}
-nav {
-  margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; /* Вертикальное расположение элементов */
+    align-items: center; /* Центрирование по горизонтали */
+    justify-content: center; /* Центрирование по вертикали */
+    min-height: 100vh; /* Минимальная высота на весь экран */
+    width: 100%;
 }
 
-nav a {
-  margin-right: 15px;
-}
 </style>

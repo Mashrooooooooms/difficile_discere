@@ -2,8 +2,9 @@
   <div>
     <nav class="navbar">
       <ul>
-        <li><router-link to="/">Главная</router-link></li>
         <li><router-link to="/about">Карта поставщиков</router-link></li>
+        <li><router-link to="/request">Техобслуживание</router-link></li>
+        <li><router-link to="/reg">Регистрация</router-link></li>
       </ul>
     </nav>
 
@@ -14,8 +15,23 @@
 
     <div class="content">
       <h2>Главная страница</h2>
-      <p>Подзаголовок</p>
     </div>
+
+    <section class="news">
+      <h2>Новости</h2>
+      <div class="news-item">
+        <h3>Новость 1</h3>
+        <p>Краткое описание новости 1.</p>
+      </div>
+      <div class="news-item">
+        <h3>Новость 2</h3>
+        <p>Краткое описание новости 2.</p>
+      </div>
+      <div class="news-item">
+        <h3>Новость 3</h3>
+        <p>Краткое описание новости 3.</p>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -25,42 +41,73 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .navbar {
-  background-color: #333;
-  padding: 10px;
+    background-color: #333;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: auto;
+    z-index: 1000;
 }
 
 .navbar ul {
-  list-style: none;
-  padding: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
 }
 
 .navbar li {
-  display: inline;
-  margin-right: 20px;
+    margin-right: 15px;
 }
 
 .navbar a {
-  color: white;
-  text-decoration: none;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
 }
 
 .hero {
-  background-image: url('https://avatars.mds.yandex.net/i?id=32176ebb69397a0c7efdf26cf9a3d213_l-5869158-images-thumbs&n=13');
-  background-size: cover;
-  background-position: center;
-  color: white;
-  text-align: center;
-  padding: 100px 20px;
-  width: 100%; /* Обеспечивает полную ширину */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+    background-color: #f5f5f5;
 }
 
-.content {
-  padding: 20px; /* Добавляем отступы для контента */
+.hero-content {
+    max-width: 600px;
 }
 
-h1, h2 {
-  color: white; /* Сохраняем заголовки белыми для видимости */
+.hero-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.news {
+    margin-top: 100px;
+    padding: 20px;
+}
+
+.news h2 {
+    font-size: 2em;
+}
+
+.news-item {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
 }
 </style>

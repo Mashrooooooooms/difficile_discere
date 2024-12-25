@@ -1,19 +1,12 @@
-@import './base.css';
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  max-width: 1280px; /* Максимальная ширина контейнера */
+  margin: 0 auto; /* Центрирование контейнера */
+  padding: 2rem; /* Отступы вокруг контейнера */
   font-weight: normal;
+  width: 100%; /* Занимает всю ширину доступного пространства */
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
-}
 
 @media (hover: hover) {
   a:hover {
@@ -21,15 +14,23 @@ a,
   }
 }
 
+
 @media (min-width: 1024px) {
   body {
     display: flex;
-    place-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    margin: 0; /* Убираем отступы у body */
+    padding: 0; /* Убираем внутренние отступы у body */
+    box-sizing: border-box; /* Учитываем отступы в общей ширине и высоте элементов */
   }
 
   #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+    display: grid; /* Используем Grid для расположения элементов */
+    grid-template-columns: repeat(2, 1fr); /* Две колонки одинаковой ширины */
+    width:100%; /* Занимаем всю ширину за вычетом отступов */
+    padding: 0; /* Убираем отступы внутри контейнера */
+    gap: 2rem; /* Промежутки между элементами сетки */
   }
 }

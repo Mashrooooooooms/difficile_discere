@@ -1,9 +1,9 @@
-import './assets/main.css'
+import './assets/main.css'; // Импорт основного файла стилей
 
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router';
 
 createApp(App)
-.use(router)
-.mount('#app');
+  .use(router)
+  .mount('#app');
