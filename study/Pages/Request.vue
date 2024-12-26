@@ -1,13 +1,11 @@
 <template>
+    <nav class="navbar">
+        <div class="links">
+          <router-link to="/">Главная</router-link>
+          <router-link to="/about">Карта поставщиков</router-link>
+        </div>
+      </nav>
     <div>
-        <nav class="navbar">
-            <ul>
-                <li><router-link to="/">Главная</router-link></li>
-                <li><router-link to="/about">Карта поставщиков</router-link></li>
-                <li><router-link to="/reg">Регистрация</router-link></li>
-            </ul>
-        </nav>
-
         <h1>Заявки на ремонт</h1>
 
         <form @submit.prevent="submitRequest" class="request-form">
@@ -55,7 +53,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .navbar {
     background-color: #333;
     padding: 10px;
@@ -66,13 +64,6 @@ export default {
     z-index: 1000;
 }
 
-.navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
 .navbar li {
     margin-right: 15px;
 }
@@ -81,10 +72,7 @@ export default {
     color: white;
     text-decoration: none;
     font-weight: bold;
-}
-
-.navbar a:hover {
-    text-decoration: underline;
+    margin: 0 10px;
 }
 
 h1 {
