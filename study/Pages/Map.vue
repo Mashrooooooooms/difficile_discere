@@ -4,28 +4,38 @@
         <div class="links">
           <router-link to="/">Главная</router-link>
           <router-link to="/request">Техобслуживание</router-link>
-
+          <button class="search-button" @click="openSearch">Поиск</button> <!-- Кнопка поиска -->
         </div>
       </nav>
       <div class="content">
         <div id="map" style="
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: -50px;
-        left: 0;
-        right: 0;">
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: -50px;
+          left: 0;
+          right: 0;">
         </div>
       </div>
+  
+      <!-- Компонент поиска -->
+      <Search v-if="isSearchVisible" @close="isSearchVisible = false" />
     </div>
   </template>
   
   <script>
+  // Не забудьте импортировать компонент Search
+  import Search from '@/components/Search.vue';
+  
   export default {
     name: 'Map',
+    components: {
+      Search // Регистрация компонента
+    },
     data() {
       return {
         mapInstance: null,
+        isSearchVisible: false // Переменная для управления видимостью поиска
       };
     },
     mounted() {
@@ -67,6 +77,9 @@
   
           this.mapInstance = map;
         });
+      },
+      openSearch() {
+        this.isSearchVisible = true; // Открытие компонента поиска
       }
     }
   }
@@ -82,11 +95,26 @@
     width: 100%;
     z-index: 1000;
   }
+  
   .links a {
     margin: 0 10px;
     color: white;
     text-decoration: none;
     font-weight: bold;
+  }
+  
+  .search-button { /* Стили для кнопки поиска */
+    background-color: #333; /* Цвет фона такой же, как у навигационной панели */
+    color: white; /* Цвет текста */
+    border: none; /* Убираем рамку */
+    padding: 10px 15px; /* Внутренние отступы */
+    cursor: pointer; /* Указатель при наведении */
+    font-weight: bold; /* Жирный шрифт для текста */
+    border-radius: 5px; /* Закругленные углы */
+  }
+  
+  .search-button:hover { /* Эффект при наведении на кнопку поиска */
+    background-color: #555; /* Темнее при наведении */
   }
   </style>
   
