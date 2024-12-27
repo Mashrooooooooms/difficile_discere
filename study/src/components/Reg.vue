@@ -1,27 +1,39 @@
-<!-- Регистрация через локалку ссылка в чате -->
 <template>
-  <nav class="navbar">
-        <div class="links">
-          <router-link to="/">Главная</router-link>
-          <router-link to="/request">Техобслуживание</router-link>
-          <router-link to="/about">Карта поставщиков</router-link>
+  <div class="modal-overlay" @click.self="$emit('close')">
+    <div class="modal registration-modal">
+      <button class="close-button" @click="$emit('close')">&times;</button>
+      <h2>Регистрация</h2>
+      <form @submit.prevent="register">
+        <div class="form-group">
+          <label for="email">Введите почту</label>
+          <input id="email" class="email" v-model="email" type="email" placeholder="Введите почту" required>
         </div>
-      </nav>
-  <section class="hero">
-      <h1>Регистрация</h1>
-      <p></p>
-  </section>
-  <div class="reg">
-    <p>Введите почту</p>
-    <input class="email"  v-model="text" placeholder="Введите почту">
-    <p>Введите пароль</p>
-    <input class="password" v-model="text" placeholder="Введите пароль">
+        <div class="form-group">
+          <label for="password">Введите пароль</label>
+          <input id="password" class="password" v-model="password" type="password" placeholder="Введите пароль" required>
+        </div>
+        <button type="submit" class="submit-button">Зарегистрироваться</button>
+      </form>
+    </div>
   </div>
 </template>
-  
+
 <script>
 export default {
-  name: 'Reg',
+  name: 'RegistrationModal',
+  data() {
+    return {
+      email: '',
+      password: ''
+    }
+  },
+  methods: {
+    register() {
+      // Здесь будет логика регистрации
+      console.log('Регистрация:', this.email, this.password);
+      // После успешной регистрации:
+      this.$emit('close');
+    }
+  }
 }
 </script>
-  

@@ -1,16 +1,20 @@
 <template>
-  <div>
-    <input
-      type="text"
-      v-model="searchQuery"
-      @input="onSearch"
-      placeholder="Введите слово для поиска..."
-    />
-    <ul v-if="filteredResults.length">
-      <li v-for="(result, index) in filteredResults" :key="index">
-        {{ result }}
-      </li>
-    </ul>
+  <div class="search-modal">
+    <div class="search-content">
+      <button class="close-button" @click="$emit('close')">&times;</button>
+      <input
+        type="text"
+        v-model="searchQuery"
+        @input="onSearch"
+        placeholder="Введите слово для поиска..."
+        autofocus
+      />
+      <ul v-if="filteredResults.length">
+        <li v-for="(result, index) in filteredResults" :key="index">
+          {{ result }}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -18,15 +22,15 @@
 export default {
   data() {
     return {
-      searchQuery: '', // Хранит значение поискового запроса
-      items: [ // Пример данных для поиска
+      searchQuery: '',
+      items: [
         '#Один. Ремонт техники. Ссылка.',
         '#Два. Карта поставщиков. Ссылка',
         '#Три. Конкретная новость. Ссылка',
         '#Четыре. Регистрация. Ссылка',
         'Пятый элемент. Хороший фильм.'
       ],
-      filteredResults: [] // Список отфильтрованных результатов
+      filteredResults: []
     };
   },
   methods: {
@@ -44,18 +48,3 @@ export default {
 };
 </script>
 
-<style scoped>
-input {
-  padding: 10px;
-  width: 100%;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  padding: 5px;
-}
-</style>
