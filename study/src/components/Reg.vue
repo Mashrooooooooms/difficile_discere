@@ -25,32 +25,3 @@ export default {
 }
 </script>
   
-<style scoped>
-.navbar {
-    background-color: #333;
-    padding: 10px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-}
-.links a {
-  margin: 0 10px;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-.hero {
-position: relative;
-left: 0;
-right: 0;
-top: 0;
-}
-.reg {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-</style>
-  
