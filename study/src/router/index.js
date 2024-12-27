@@ -3,6 +3,7 @@ import Home from '../../Pages/Home.vue';
 import About from '../../Pages/Map.vue';
 import Request from '../../Pages/Request.vue';
 import Reg from '../components/Reg.vue';
+import News from '../../Pages/News.vue';
 
 const routes = [
   {
@@ -21,6 +22,10 @@ const routes = [
     path: '/reg',
     name: 'Reg',
     component: Reg,
+  }, {
+    path: '/News',
+    name: News,
+    component: News,
   }
 ];
 

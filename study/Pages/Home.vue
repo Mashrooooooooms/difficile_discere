@@ -6,7 +6,7 @@
         <router-link to="/about">Карта поставщиков</router-link>
         <router-link to="/request">Техобслуживание</router-link>
         <button class="regbut" @click="showModal = true">Регистрация</button>
-        <button class="search-button" @click="openSearch">Поиск</button> <!-- Кнопка поиска -->
+        <button class="search-button" @click="openSearch">Поиск</button>
       </ul>
     </nav>
 
@@ -44,17 +44,10 @@
 
     <div class="mineContainer">
       <h2>Новости</h2>
-      <div class="newsItem">
-        <h3>Новость 1</h3>
-        <p>Краткое описание новости 1.</p>
-      </div>
-      <div class="newsItem">
-        <h3>Новость 2</h3>
-        <p>Краткое описание новости 2.</p>
-      </div>
-      <div class="newsItem">
-        <h3>Новость 3</h3>
-        <p>Краткое описание новости 3.</p>
+      <div v-for="news in newsItems" :key="news.id" class="newsItem">
+        <h3>{{ news.title }}</h3>
+        <p>{{ news.description }}</p>
+        <small>{{ news.date }}</small>
       </div>
     </div>
 
@@ -70,31 +63,78 @@ import Search from '@/components/Search.vue';
 export default {
   name: 'Home',
   components: {
-    Search // Регистрация компонента
+    Search
   },
   data() {
     return {
       showModal: false,
       username: '',
       password: '',
-      isSearchVisible: false // Переменная для управления видимостью поиска
+      isSearchVisible: false,
+      newsItems: [
+        { id: 1, title: 'Новость 1', description: 'Описание новости 1', date: '2024-12-27' },
+        { id: 2, title: 'Новость 2', description: 'Описание новости 2', date: '2024-12-26' },
+        { id: 3, title: 'Новость 3', description: 'Описание новости 3', date: '2024-12-25' },
+      ]
     };
   },
   methods: {
     handleSubmit() {
-      // Тут вписывать отправку
       console.log('Регистрация:', this.username, this.password);
-      
-      // Закрытие модального окна после регистрации
       this.showModal = false;
-      
-      // Очистка полей
       this.username = '';
       this.password = '';
     },
     openSearch() {
-      this.isSearchVisible = true; // Открытие компонента поиска
+      this.isSearchVisible = true;
     }
   }
 }
 </script>
+
+<style scoped>
+.navbar {
+  /* Стили для навигационной панели */
+}
+
+.modal-overlay {
+  /* Стили для фона модального окна */
+}
+
+.modal {
+  /* Стили для модального окна */
+}
+
+.hero {
+  /* Стили для героя */
+}
+
+.content {
+  /* Стили для основного контента */
+}
+
+.mineContainer {
+  /* Стили для контейнера новостей */
+}
+
+.newsItem {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.newsItem h3 {
+  margin-top: 0;
+}
+
+.newsItem small {
+  color: #666;
+}
+
+footer {
+  /* Стили для футера */
+}
+
+/* Добавьте дополнительные стили по необходимости */
+</style>
