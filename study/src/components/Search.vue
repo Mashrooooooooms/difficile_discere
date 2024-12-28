@@ -11,7 +11,8 @@
       />
       <ul v-if="filteredResults.length">
         <li v-for="(result, index) in filteredResults" :key="index">
-          {{ result }}
+          <a v-if="result.link" :href="result.link" target="_blank">{{ result.text }}</a>
+          <span v-else>{{ result.text }}</span>
         </li>
       </ul>
     </div>
@@ -24,11 +25,11 @@ export default {
     return {
       searchQuery: '',
       items: [
-        '#Один. Ремонт техники. Ссылка.',
-        '#Два. Карта поставщиков. Ссылка',
-        '#Три. Конкретная новость. Ссылка',
-        '#Четыре. Регистрация. Ссылка',
-        'Пятый элемент. Хороший фильм.'
+        { text: 'Ремонт техники', link: 'http://localhost:5173/request' },
+        { text: 'Карта поставщиков', link: 'http://localhost:5173/about' },
+        { text: 'Конкретная новость', link: null },
+        { text: 'Регистрация', link: null },
+        { text: 'Пятый элемент. Хороший фильм.', link: null }
       ],
       filteredResults: []
     };
@@ -38,7 +39,7 @@ export default {
       if (this.searchQuery.length > 0) {
         const query = this.searchQuery.toLowerCase();
         this.filteredResults = this.items.filter(item =>
-          item.toLowerCase().includes(query)
+          item.text.toLowerCase().includes(query)
         );
       } else {
         this.filteredResults = [];
@@ -48,3 +49,6 @@ export default {
 };
 </script>
 
+<style scoped>
+/* Добавьте стили для поискового модального окна, если необходимо */
+</style>

@@ -40,6 +40,10 @@
 
     <div class="content">
       <h2>Главная страница</h2>
+
+      <!-- Добавляем компонент ChatBot -->
+      <ChatBot />
+      
     </div>
 
     <div class="mineContainer">
@@ -59,11 +63,13 @@
 
 <script>
 import Search from '@/components/Search.vue';
+import ChatBot from '@/components/ChatBot.vue'; // Импортируем компонент ChatBot
 
 export default {
   name: 'Home',
   components: {
-    Search
+    Search,
+    ChatBot // Регистрация компонента ChatBot
   },
   data() {
     return {
