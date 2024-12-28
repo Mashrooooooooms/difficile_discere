@@ -61,40 +61,33 @@
   </div>
 </template>
 
-<script>
+<script setup>
+// Импортируем компоненты
+import { ref } from 'vue';
 import Search from '@/components/Search.vue';
 import ChatBot from '@/components/ChatBot.vue'; // Импортируем компонент ChatBot
 
-export default {
-  name: 'Home',
-  components: {
-    Search,
-    ChatBot // Регистрация компонента ChatBot
-  },
-  data() {
-    return {
-      showModal: false,
-      username: '',
-      password: '',
-      isSearchVisible: false,
-      newsItems: [
-        { id: 1, title: 'Новость 1', description: 'Описание новости 1', date: '2024-12-27' },
-        { id: 2, title: 'Новость 2', description: 'Описание новости 2', date: '2024-12-26' },
-        { id: 3, title: 'Новость 3', description: 'Описание новости 3', date: '2024-12-25' },
-      ]
-    };
-  },
-  methods: {
-    handleSubmit() {
-      console.log('Регистрация:', this.username, this.password);
-      this.showModal = false;
-      this.username = '';
-      this.password = '';
-    },
-    openSearch() {
-      this.isSearchVisible = true;
-    }
-  }
+// Определяем реактивные переменные
+const showModal = ref(false);
+const username = ref('');
+const password = ref('');
+const isSearchVisible = ref(false);
+const newsItems = ref([
+  { id: 1, title: 'Новость 1', description: 'Описание новости 1', date: '2024-12-27' },
+  { id: 2, title: 'Новость 2', description: 'Описание новости 2', date: '2024-12-26' },
+  { id: 3, title: 'Новость 3', description: 'Описание новости 3', date: '2024-12-25' },
+]);
+
+// Определяем методы
+function handleSubmit() {
+  console.log('Регистрация:', username.value, password.value);
+  showModal.value = false;
+  username.value = '';
+  password.value = '';
+}
+
+function openSearch() {
+  isSearchVisible.value = true;
 }
 </script>
 

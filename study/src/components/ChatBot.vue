@@ -9,44 +9,43 @@
     </div>
   </template>
   
-  <script>
-  export default {
-    data() {
-      return {
-        messages: [],
-        userInput: '',
-      };
-    },
-    methods: {
-      sendMessage() {
-        if (this.userInput.trim() === '') return;
+  <script setup>
+  import { ref } from 'vue';
   
-        // Добавляем сообщение пользователя
-        this.messages.push(`Вы: ${this.userInput}`);
-        
-        // Обрабатываем и отвечаем на сообщение
-        this.getBotResponse(this.userInput);
-        
-        // Очищаем поле ввода
-        this.userInput = '';
-      },
-      getBotResponse(input) {
-        let response;
-        
-        // Простейшая логика ответов
-        if (input.toLowerCase().includes('привет')) {
-          response = 'Привет! Как я могу помочь?';
-        } else if (input.toLowerCase().includes('как дела')) {
-          response = 'У меня всё хорошо, спасибо!';
-        } else {
-          response = 'Извините, я не понимаю.';
-        }
+  // Определяем реактивные переменные
+  const messages = ref([]);
+  const userInput = ref('');
   
-        // Добавляем ответ бота
-        this.messages.push(`Бот: ${response}`);
-      },
-    },
-  };
+  // Функция для отправки сообщения
+  function sendMessage() {
+    if (userInput.value.trim() === '') return;
+  
+    // Добавляем сообщение пользователя
+    messages.value.push(`Вы: ${userInput.value}`);
+    
+    // Обрабатываем и отвечаем на сообщение
+    getBotResponse(userInput.value);
+    
+    // Очищаем поле ввода
+    userInput.value = '';
+  }
+  
+  // Функция для получения ответа бота
+  function getBotResponse(input) {
+    let response;
+  
+    // Простейшая логика ответов
+    if (input.toLowerCase().includes('привет')) {
+      response = 'Привет! Как я могу помочь?';
+    } else if (input.toLowerCase().includes('как дела')) {
+      response = 'У меня всё хорошо, спасибо!';
+    } else {
+      response = 'Извините, я не понимаю.';
+    }
+  
+    // Добавляем ответ бота
+    messages.value.push(`Бот: ${response}`);
+  }
   </script>
   
   <style scoped>

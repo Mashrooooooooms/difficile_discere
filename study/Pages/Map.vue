@@ -129,7 +129,7 @@ export default {
         
         if (nearestPlacemark) {
           this.mapInstance.setCenter(nearestPlacemark.coords); // Центрируем карту на ближайшем поставщике
-          this.mapInstance.setZoom(12); // Устанавливаем зум на 18
+          this.mapInstance.setZoom(12);
 
           // Добавляем метку на карту
           const point = new ymaps.Placemark(nearestPlacemark.coords, {
@@ -154,7 +154,6 @@ export default {
 </script>
 
 <style scoped>
-/* Добавьте стили для компонента карты по необходимости */
 .search-nearest-button {
   margin-left: 10px; /* Отступ между кнопками */
 }
